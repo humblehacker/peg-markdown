@@ -115,7 +115,7 @@ static void print_html_element(GString *out, element *elt, bool obfuscate) {
     case LINEBREAK:
         g_string_append_printf(out, "<br/>\n");
         break;
-    case STR:
+    case STRING:
         print_html_string(out, elt->contents.str, obfuscate);
         break;
     case ELLIPSIS:
@@ -367,7 +367,7 @@ static void print_latex_element(GString *out, element *elt) {
     case LINEBREAK:
         g_string_append_printf(out, "\\\\\n");
         break;
-    case STR:
+    case STRING:
         print_latex_string(out, elt->contents.str);
         break;
     case ELLIPSIS:
@@ -567,7 +567,7 @@ static void print_groff_mm_element(GString *out, element *elt, int count) {
         g_string_append_printf(out, ".br\n");
         padded = 0;
         break;
-    case STR:
+    case STRING:
         print_groff_string(out, elt->contents.str);
         padded = 0;
         break;

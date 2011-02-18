@@ -54,7 +54,7 @@ Plain =     a:Inlines
 AtxInline = !Newline !(Sp? '#'* Sp Newline) Inline
 
 AtxStart =  < ( "######" | "#####" | "####" | "###" | "##" | "#" ) >
-            { $$ = mk_element(H1 + (strlen(yytext) - 1)); }
+            { $$ = mk_element(H1 + (int)(strlen(yytext) - 1)); }
 
 AtxHeading = s:AtxStart Sp? a:StartList ( AtxInline { a = cons($$, a); } )+ (Sp? '#'* Sp)?  Newline
             { $$ = mk_list(s->key, a);
@@ -108,7 +108,7 @@ HorizontalRule = NonindentSpace
                  Sp Newline BlankLine+
                  { $$ = mk_element(HRULE); }
 
-Bullet = !HorizontalRule NonindentSpace ('+' | '*' | '-') Spacechar+
+Bullet = !HorizontalRule NonindentSpace ('+' | '*' | '-' | '•') Spacechar+
 
 BulletList = &Bullet (ListTight | ListLoose)
              { $$->key = BULLETLIST; }
@@ -488,7 +488,7 @@ Link =  ExplicitLink | ReferenceLink | AutoLink
 ReferenceLink = ReferenceLinkDouble | ReferenceLinkSingle
 
 ReferenceLinkDouble =  a:Label < Spnl > !"[]" b:Label
-                       {   link match;
+                       {   Link match;
                            if (find_reference(&match, b->children)) {
                                $$ = mk_link(a->children, match.url, match.title);
                                free(a);
@@ -503,7 +503,7 @@ ReferenceLinkDouble =  a:Label < Spnl > !"[]" b:Label
                        }
 
 ReferenceLinkSingle =  a:Label < (Spnl "[]")? >
-                       {   link match;
+                       {   Link match;
                            if (find_reference(&match, a->children)) {
                                $$ = mk_link(a->children, match.url, match.title);
                                free(a);

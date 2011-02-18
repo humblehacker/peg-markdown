@@ -8,10 +8,10 @@ extern char *strdup(const char *string);
 struct Link {
     struct Element   *label;
     char             *url;
-    char             *title;    
+    char             *title;
 };
 
-typedef struct Link link;
+typedef struct Link Link;
 
 /* Union for contents of an Element (string, list, or link). */
 union Contents {
@@ -19,7 +19,7 @@ union Contents {
     struct Link      *link;
 };
 
-/* Types of semantic values returned by parsers. */ 
+/* Types of semantic values returned by parsers. */
 enum keys { LIST,   /* A generic list of values.  For ordered and bullet lists, see below. */
             RAW,    /* Raw markdown to be processed further */
             SPACE,
@@ -30,7 +30,7 @@ enum keys { LIST,   /* A generic list of values.  For ordered and bullet lists, 
             APOSTROPHE,
             SINGLEQUOTED,
             DOUBLEQUOTED,
-            STR,
+            STRING,
             LINK,
             IMAGE,
             CODE,

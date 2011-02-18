@@ -1,0 +1,548 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6334F217130C8AE1000D1180 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6334F216130C8AE1000D1180 /* Foundation.framework */; };
+		6334F236130C8B99000D1180 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6334F235130C8B99000D1180 /* Cocoa.framework */; };
+		6334F27A130C8D46000D1180 /* markdown.c in Sources */ = {isa = PBXBuildFile; fileRef = 6334F277130C8CEE000D1180 /* markdown.c */; settings = {COMPILER_FLAGS = "$(pkg-config --cflags glib-2.0)"; }; };
+		6334F280130C9323000D1180 /* markdown_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 6334F273130C8CEE000D1180 /* markdown_lib.c */; };
+		6334F281130C9326000D1180 /* markdown_output.c in Sources */ = {isa = PBXBuildFile; fileRef = 6334F274130C8CEE000D1180 /* markdown_output.c */; };
+		6334F282130C932A000D1180 /* markdown_parser.leg in Sources */ = {isa = PBXBuildFile; fileRef = 6334F275130C8CEE000D1180 /* markdown_parser.leg */; };
+		6334F28B130C995D000D1180 /* libpeg-markdown.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6334F234130C8B99000D1180 /* libpeg-markdown.a */; };
+		63B447AD130E3BF100124BE5 /* tree.h in Headers */ = {isa = PBXBuildFile; fileRef = 63B4479A130E3BF100124BE5 /* tree.h */; };
+		63B447AE130E3BF100124BE5 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 63B4479B130E3BF100124BE5 /* version.h */; };
+		63E25010130EDE1500328B79 /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E2500F130EDE1500328B79 /* libglib-2.0.0.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		6334F27E130C8D6D000D1180 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.leg";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			name = "Generate Leg Parser";
+			outputFiles = (
+				"$(DERIVED_FILES_DIR)/$(INPUT_FILE_BASE).m",
+			);
+			script = "${SRCROOT}/peg-0.1.4/leg -o ${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.m ${INPUT_FILE_PATH}";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		6334F27B130C8D4C000D1180 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6334F209130C8AE1000D1180 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6334F233130C8B99000D1180;
+			remoteInfo = "peg-markdown";
+		};
+		63B447B2130E3BF200124BE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B44792130E3BF100124BE5 /* peg-0.1.4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 63B132C8130AE04D008A1CB4;
+			remoteInfo = peg;
+		};
+		63B447B4130E3BF200124BE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B44792130E3BF100124BE5 /* peg-0.1.4.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 63B132DF130AE0C9008A1CB4;
+			remoteInfo = leg;
+		};
+		63B447BB130E3C2400124BE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63B44792130E3BF100124BE5 /* peg-0.1.4.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 63B132D5130AE0C9008A1CB4;
+			remoteInfo = leg;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6334F210130C8AE1000D1180 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6334F212130C8AE1000D1180 /* markdown */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = markdown; sourceTree = BUILT_PRODUCTS_DIR; };
+		6334F216130C8AE1000D1180 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6334F234130C8B99000D1180 /* libpeg-markdown.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libpeg-markdown.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6334F235130C8B99000D1180 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		6334F238130C8B99000D1180 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6334F239130C8B99000D1180 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6334F23A130C8B99000D1180 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6334F23D130C8B99000D1180 /* peg-markdown-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "peg-markdown-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		6334F272130C8CEE000D1180 /* markdown_lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = markdown_lib.h; sourceTree = SOURCE_ROOT; };
+		6334F273130C8CEE000D1180 /* markdown_lib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = markdown_lib.c; sourceTree = SOURCE_ROOT; };
+		6334F274130C8CEE000D1180 /* markdown_output.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = markdown_output.c; sourceTree = SOURCE_ROOT; };
+		6334F275130C8CEE000D1180 /* markdown_parser.leg */ = {isa = PBXFileReference; lastKnownFileType = text; path = markdown_parser.leg; sourceTree = SOURCE_ROOT; };
+		6334F276130C8CEE000D1180 /* markdown_peg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = markdown_peg.h; sourceTree = SOURCE_ROOT; };
+		6334F277130C8CEE000D1180 /* markdown.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = markdown.c; sourceTree = SOURCE_ROOT; };
+		6334F278130C8CEE000D1180 /* parsing_functions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = parsing_functions.c; sourceTree = SOURCE_ROOT; };
+		6334F279130C8CEE000D1180 /* utility_functions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = utility_functions.c; sourceTree = SOURCE_ROOT; };
+		63B44771130E3BF100124BE5 /* compile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compile.c; sourceTree = "<group>"; };
+		63B44773130E3BF100124BE5 /* accept.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = accept.c; sourceTree = "<group>"; };
+		63B44774130E3BF100124BE5 /* accept.peg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = accept.peg; sourceTree = "<group>"; };
+		63B44775130E3BF100124BE5 /* accept.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = accept.ref; sourceTree = "<group>"; };
+		63B44776130E3BF100124BE5 /* basic.leg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = basic.leg; sourceTree = "<group>"; };
+		63B44777130E3BF100124BE5 /* basic.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = basic.ref; sourceTree = "<group>"; };
+		63B44778130E3BF100124BE5 /* bench.bas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bench.bas; sourceTree = "<group>"; };
+		63B44779130E3BF100124BE5 /* calc.leg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calc.leg; sourceTree = "<group>"; };
+		63B4477A130E3BF100124BE5 /* calc.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = calc.ref; sourceTree = "<group>"; };
+		63B4477B130E3BF100124BE5 /* dc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dc.c; sourceTree = "<group>"; };
+		63B4477C130E3BF100124BE5 /* dc.peg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dc.peg; sourceTree = "<group>"; };
+		63B4477D130E3BF100124BE5 /* dc.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dc.ref; sourceTree = "<group>"; };
+		63B4477E130E3BF100124BE5 /* dcv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dcv.c; sourceTree = "<group>"; };
+		63B4477F130E3BF100124BE5 /* dcv.peg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dcv.peg; sourceTree = "<group>"; };
+		63B44780130E3BF100124BE5 /* dcv.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dcv.ref; sourceTree = "<group>"; };
+		63B44781130E3BF100124BE5 /* fibonacci.bas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fibonacci.bas; sourceTree = "<group>"; };
+		63B44782130E3BF100124BE5 /* left.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = left.c; sourceTree = "<group>"; };
+		63B44783130E3BF100124BE5 /* left.peg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = left.peg; sourceTree = "<group>"; };
+		63B44784130E3BF100124BE5 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		63B44785130E3BF100124BE5 /* rule.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rule.c; sourceTree = "<group>"; };
+		63B44786130E3BF100124BE5 /* rule.peg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rule.peg; sourceTree = "<group>"; };
+		63B44787130E3BF100124BE5 /* rule.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rule.ref; sourceTree = "<group>"; };
+		63B44788130E3BF100124BE5 /* test.bas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.bas; sourceTree = "<group>"; };
+		63B44789130E3BF100124BE5 /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
+		63B4478A130E3BF100124BE5 /* test.peg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.peg; sourceTree = "<group>"; };
+		63B4478B130E3BF100124BE5 /* test.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.ref; sourceTree = "<group>"; };
+		63B4478C130E3BF100124BE5 /* username.leg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = username.leg; sourceTree = "<group>"; };
+		63B4478D130E3BF100124BE5 /* wc.leg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wc.leg; sourceTree = "<group>"; };
+		63B4478E130E3BF100124BE5 /* wc.ref */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wc.ref; sourceTree = "<group>"; };
+		63B4478F130E3BF100124BE5 /* leg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = leg.c; sourceTree = "<group>"; };
+		63B44790130E3BF100124BE5 /* leg.leg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leg.leg; sourceTree = "<group>"; };
+		63B44791130E3BF100124BE5 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		63B44792130E3BF100124BE5 /* peg-0.1.4.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "peg-0.1.4.xcodeproj"; sourceTree = "<group>"; };
+		63B44795130E3BF100124BE5 /* peg.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = peg.1; sourceTree = "<group>"; };
+		63B44796130E3BF100124BE5 /* peg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = peg.c; sourceTree = "<group>"; };
+		63B44797130E3BF100124BE5 /* peg.peg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = peg.peg; sourceTree = "<group>"; };
+		63B44798130E3BF100124BE5 /* peg.peg-c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "peg.peg-c"; sourceTree = "<group>"; };
+		63B44799130E3BF100124BE5 /* tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tree.c; sourceTree = "<group>"; };
+		63B4479A130E3BF100124BE5 /* tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
+		63B4479B130E3BF100124BE5 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		63E2500D130ED7E600328B79 /* libglib-2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.dylib"; path = "usr/local/lib/libglib-2.0.dylib"; sourceTree = SDKROOT; };
+		63E2500F130EDE1500328B79 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "../../../../../../usr/local/lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6334F20F130C8AE1000D1180 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63E25010130EDE1500328B79 /* libglib-2.0.0.dylib in Frameworks */,
+				6334F28B130C995D000D1180 /* libpeg-markdown.a in Frameworks */,
+				6334F217130C8AE1000D1180 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6334F231130C8B99000D1180 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6334F236130C8B99000D1180 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6334F207130C8AE1000D1180 = {
+			isa = PBXGroup;
+			children = (
+				63E2500F130EDE1500328B79 /* libglib-2.0.0.dylib */,
+				6334F271130C8CC0000D1180 /* markdown */,
+				63B44770130E3BF100124BE5 /* peg-0.1.4 */,
+				6334F23B130C8B99000D1180 /* peg-markdown */,
+				6334F215130C8AE1000D1180 /* Frameworks */,
+				6334F213130C8AE1000D1180 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6334F213130C8AE1000D1180 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6334F234130C8B99000D1180 /* libpeg-markdown.a */,
+				6334F212130C8AE1000D1180 /* markdown */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6334F215130C8AE1000D1180 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63E2500D130ED7E600328B79 /* libglib-2.0.dylib */,
+				6334F216130C8AE1000D1180 /* Foundation.framework */,
+				6334F235130C8B99000D1180 /* Cocoa.framework */,
+				6334F237130C8B99000D1180 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6334F237130C8B99000D1180 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6334F238130C8B99000D1180 /* AppKit.framework */,
+				6334F239130C8B99000D1180 /* CoreData.framework */,
+				6334F23A130C8B99000D1180 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		6334F23B130C8B99000D1180 /* peg-markdown */ = {
+			isa = PBXGroup;
+			children = (
+				6334F272130C8CEE000D1180 /* markdown_lib.h */,
+				6334F273130C8CEE000D1180 /* markdown_lib.c */,
+				6334F274130C8CEE000D1180 /* markdown_output.c */,
+				6334F275130C8CEE000D1180 /* markdown_parser.leg */,
+				6334F276130C8CEE000D1180 /* markdown_peg.h */,
+				6334F278130C8CEE000D1180 /* parsing_functions.c */,
+				6334F279130C8CEE000D1180 /* utility_functions.c */,
+				6334F23D130C8B99000D1180 /* peg-markdown-Prefix.pch */,
+			);
+			path = "peg-markdown";
+			sourceTree = "<group>";
+		};
+		6334F271130C8CC0000D1180 /* markdown */ = {
+			isa = PBXGroup;
+			children = (
+				6334F277130C8CEE000D1180 /* markdown.c */,
+			);
+			name = markdown;
+			sourceTree = "<group>";
+		};
+		63B44770130E3BF100124BE5 /* peg-0.1.4 */ = {
+			isa = PBXGroup;
+			children = (
+				63B44771130E3BF100124BE5 /* compile.c */,
+				63B44772130E3BF100124BE5 /* examples */,
+				63B4478F130E3BF100124BE5 /* leg.c */,
+				63B44790130E3BF100124BE5 /* leg.leg */,
+				63B44791130E3BF100124BE5 /* Makefile */,
+				63B44792130E3BF100124BE5 /* peg-0.1.4.xcodeproj */,
+				63B44795130E3BF100124BE5 /* peg.1 */,
+				63B44796130E3BF100124BE5 /* peg.c */,
+				63B44797130E3BF100124BE5 /* peg.peg */,
+				63B44798130E3BF100124BE5 /* peg.peg-c */,
+				63B44799130E3BF100124BE5 /* tree.c */,
+				63B4479A130E3BF100124BE5 /* tree.h */,
+				63B4479B130E3BF100124BE5 /* version.h */,
+			);
+			path = "peg-0.1.4";
+			sourceTree = "<group>";
+		};
+		63B44772130E3BF100124BE5 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				63B44773130E3BF100124BE5 /* accept.c */,
+				63B44774130E3BF100124BE5 /* accept.peg */,
+				63B44775130E3BF100124BE5 /* accept.ref */,
+				63B44776130E3BF100124BE5 /* basic.leg */,
+				63B44777130E3BF100124BE5 /* basic.ref */,
+				63B44778130E3BF100124BE5 /* bench.bas */,
+				63B44779130E3BF100124BE5 /* calc.leg */,
+				63B4477A130E3BF100124BE5 /* calc.ref */,
+				63B4477B130E3BF100124BE5 /* dc.c */,
+				63B4477C130E3BF100124BE5 /* dc.peg */,
+				63B4477D130E3BF100124BE5 /* dc.ref */,
+				63B4477E130E3BF100124BE5 /* dcv.c */,
+				63B4477F130E3BF100124BE5 /* dcv.peg */,
+				63B44780130E3BF100124BE5 /* dcv.ref */,
+				63B44781130E3BF100124BE5 /* fibonacci.bas */,
+				63B44782130E3BF100124BE5 /* left.c */,
+				63B44783130E3BF100124BE5 /* left.peg */,
+				63B44784130E3BF100124BE5 /* Makefile */,
+				63B44785130E3BF100124BE5 /* rule.c */,
+				63B44786130E3BF100124BE5 /* rule.peg */,
+				63B44787130E3BF100124BE5 /* rule.ref */,
+				63B44788130E3BF100124BE5 /* test.bas */,
+				63B44789130E3BF100124BE5 /* test.c */,
+				63B4478A130E3BF100124BE5 /* test.peg */,
+				63B4478B130E3BF100124BE5 /* test.ref */,
+				63B4478C130E3BF100124BE5 /* username.leg */,
+				63B4478D130E3BF100124BE5 /* wc.leg */,
+				63B4478E130E3BF100124BE5 /* wc.ref */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		63B44793130E3BF100124BE5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63B447B3130E3BF200124BE5 /* peg */,
+				63B447B5130E3BF200124BE5 /* leg */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6334F232130C8B99000D1180 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63B447AD130E3BF100124BE5 /* tree.h in Headers */,
+				63B447AE130E3BF100124BE5 /* version.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6334F211130C8AE1000D1180 /* markdown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6334F220130C8AE1000D1180 /* Build configuration list for PBXNativeTarget "markdown" */;
+			buildPhases = (
+				6334F20E130C8AE1000D1180 /* Sources */,
+				6334F20F130C8AE1000D1180 /* Frameworks */,
+				6334F210130C8AE1000D1180 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6334F27C130C8D4C000D1180 /* PBXTargetDependency */,
+			);
+			name = markdown;
+			productName = markdown;
+			productReference = 6334F212130C8AE1000D1180 /* markdown */;
+			productType = "com.apple.product-type.tool";
+		};
+		6334F233130C8B99000D1180 /* peg-markdown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6334F23E130C8B99000D1180 /* Build configuration list for PBXNativeTarget "peg-markdown" */;
+			buildPhases = (
+				6334F230130C8B99000D1180 /* Sources */,
+				6334F231130C8B99000D1180 /* Frameworks */,
+				6334F232130C8B99000D1180 /* Headers */,
+			);
+			buildRules = (
+				6334F27E130C8D6D000D1180 /* PBXBuildRule */,
+			);
+			dependencies = (
+				63B447BC130E3C2400124BE5 /* PBXTargetDependency */,
+			);
+			name = "peg-markdown";
+			productName = "peg-markdown";
+			productReference = 6334F234130C8B99000D1180 /* libpeg-markdown.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6334F209130C8AE1000D1180 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = humblehacker.com;
+			};
+			buildConfigurationList = 6334F20C130C8AE1000D1180 /* Build configuration list for PBXProject "markdown" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6334F207130C8AE1000D1180;
+			productRefGroup = 6334F213130C8AE1000D1180 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 63B44793130E3BF100124BE5 /* Products */;
+					ProjectRef = 63B44792130E3BF100124BE5 /* peg-0.1.4.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				6334F211130C8AE1000D1180 /* markdown */,
+				6334F233130C8B99000D1180 /* peg-markdown */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		63B447B3130E3BF200124BE5 /* peg */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = peg;
+			remoteRef = 63B447B2130E3BF200124BE5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		63B447B5130E3BF200124BE5 /* leg */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = leg;
+			remoteRef = 63B447B4130E3BF200124BE5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6334F20E130C8AE1000D1180 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6334F27A130C8D46000D1180 /* markdown.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6334F230130C8B99000D1180 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6334F282130C932A000D1180 /* markdown_parser.leg in Sources */,
+				6334F280130C9323000D1180 /* markdown_lib.c in Sources */,
+				6334F281130C9326000D1180 /* markdown_output.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6334F27C130C8D4C000D1180 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6334F233130C8B99000D1180 /* peg-markdown */;
+			targetProxy = 6334F27B130C8D4C000D1180 /* PBXContainerItemProxy */;
+		};
+		63B447BC130E3C2400124BE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = leg;
+			targetProxy = 63B447BB130E3C2400124BE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6334F21E130C8AE1000D1180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/glib-2.0",
+					"/usr/local/lib/glib-2.0/include",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				ONLY_ACTIVE_ARCH = YES;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
+			};
+			name = Debug;
+		};
+		6334F21F130C8AE1000D1180 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/glib-2.0",
+					"/usr/local/lib/glib-2.0/include",
+				);
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)";
+			};
+			name = Release;
+		};
+		6334F221130C8AE1000D1180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "markdown-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6334F222130C8AE1000D1180 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "markdown-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6334F23F130C8B99000D1180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "peg-markdown-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6334F240130C8B99000D1180 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "peg-markdown-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6334F20C130C8AE1000D1180 /* Build configuration list for PBXProject "markdown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6334F21E130C8AE1000D1180 /* Debug */,
+				6334F21F130C8AE1000D1180 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6334F220130C8AE1000D1180 /* Build configuration list for PBXNativeTarget "markdown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6334F221130C8AE1000D1180 /* Debug */,
+				6334F222130C8AE1000D1180 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6334F23E130C8B99000D1180 /* Build configuration list for PBXNativeTarget "peg-markdown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6334F23F130C8B99000D1180 /* Debug */,
+				6334F240130C8B99000D1180 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6334F209130C8AE1000D1180 /* Project object */;
+}

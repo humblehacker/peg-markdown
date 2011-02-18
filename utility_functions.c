@@ -28,14 +28,14 @@ static element *reverse(element *list) {
     return new;
 }
 
-/* concat_string_list - concatenates string contents of list of STR elements.
- * Frees STR elements as they are added to the concatenation. */
+/* concat_string_list - concatenates string contents of list of STRING elements.
+ * Frees STRING elements as they are added to the concatenation. */
 static GString *concat_string_list(element *list) {
     GString *result;
     element *next;
     result = g_string_new("");
     while (list != NULL) {
-        assert(list->key == STR);
+        assert(list->key == STRING);
         assert(list->contents.str != NULL);
         g_string_append(result, list->contents.str);
         next = list->next;
@@ -75,23 +75,23 @@ static element * mk_element(int key) {
     return result;
 }
 
-/* mk_str - constructor for STR element */
+/* mk_str - constructor for STRING element */
 static element * mk_str(char *string) {
     element *result;
     assert(string != NULL);
-    result = mk_element(STR);
+    result = mk_element(STRING);
     result->contents.str = strdup(string);
     return result;
 }
 
-/* mk_str_from_list - makes STR element by concatenating a
+/* mk_str_from_list - makes STRING element by concatenating a
  * reversed list of strings, adding optional extra newline */
 static element * mk_str_from_list(element *list, bool extra_newline) {
     element *result;
     GString *c = concat_string_list(reverse(list));
     if (extra_newline)
         g_string_append(c, "\n");
-    result = mk_element(STR);
+    result = mk_element(STRING);
     result->contents.str = c->str;
     g_string_free(c, false);
     return result;
@@ -111,7 +111,7 @@ static element * mk_list(int key, element *lst) {
 static element * mk_link(element *label, char *url, char *title) {
     element *result;
     result = mk_element(LINK);
-    result->contents.link = malloc(sizeof(link));
+    result->contents.link = malloc(sizeof(Link));
     result->contents.link->label = label;
     result->contents.link->url = strdup(url);
     result->contents.link->title = strdup(title);
@@ -137,7 +137,7 @@ static bool match_inlines(element *l1, element *l2) {
         case APOSTROPHE:
             break;
         case CODE:
-        case STR:
+        case STRING:
         case HTML:
             if (strcasecmp(l1->contents.str, l2->contents.str) == 0)
                 break;
@@ -168,9 +168,9 @@ static bool match_inlines(element *l1, element *l2) {
 
 /* find_reference - return true if link found in references matching label.
  * 'link' is modified with the matching url and title. */
-static bool find_reference(link *result, element *label) {
+static bool find_reference(Link *result, element *label) {
     element *cur = references;  /* pointer to walk up list of references */
-    link *curitem;
+    Link *curitem;
     while (cur != NULL) {
         curitem = cur->contents.link;
         if (match_inlines(label, curitem->label)) {

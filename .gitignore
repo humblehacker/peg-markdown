@@ -1,0 +1,7 @@
+# Xcode
+build
+*.xcworkspace
+xcuserdata
+
+# other
+tags

@@ -70,7 +70,7 @@ static void print_tree(element * elt, int indent) {
             case APOSTROPHE:         key = "APOSTROPHE"; break;
             case SINGLEQUOTED:       key = "SINGLEQUOTED"; break;
             case DOUBLEQUOTED:       key = "DOUBLEQUOTED"; break;
-            case STR:                key = "STR"; break;
+            case STRING:             key = "STRING"; break;
             case LINK:               key = "LINK"; break;
             case IMAGE:              key = "IMAGE"; break;
             case CODE:               key = "CODE"; break;
@@ -96,10 +96,10 @@ static void print_tree(element * elt, int indent) {
             case NOTE:               key = "NOTE"; break;
             default:                 key = "?";
         }
-        if ( elt->key == STR ) {
-            fprintf(stderr, "0x%x: %s   '%s'\n", (int)elt, key, elt->contents.str);
+        if ( elt->key == STRING ) {
+            fprintf(stderr, "%p: %s   '%s'\n", elt, key, elt->contents.str);
         } else {
-            fprintf(stderr, "0x%x: %s\n", (int)elt, key);
+            fprintf(stderr, "%p: %s\n", elt, key);
         }
         if (elt->children)
             print_tree(elt->children, indent + 4);

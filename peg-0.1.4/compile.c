@@ -119,7 +119,7 @@ static void Node_compile_c_ko(Node *node, int ko)
     case Character:
     case String:
       {
-	int len= strlen(node->string.value);
+	size_t len= strlen(node->string.value);
 	if (1 == len || (2 == len && '\\' == node->string.value[0]))
 	  fprintf(output, "  if (!yymatchChar('%s')) goto l%d;", node->string.value, ko);
 	else
