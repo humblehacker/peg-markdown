@@ -15,12 +15,6 @@
 
  ***********************************************************************/
 
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
-#include <Foundation/Foundation.h>
 #import "markdown_peg.h"
 
 static int extensions;
@@ -106,7 +100,7 @@ static void print_html_element_list(NSMutableString *out, element *list, bool ob
 static void add_endnote(element *elt) {
     if (endnotes == nil)
         endnotes = [[NSMutableArray alloc] init];
-   [endnotes insertObject:[NSValue valueWithPointer:(const void*)elt] atIndex:0];
+   [endnotes insertObject:[NSValue valueWithPointer:(void*)elt] atIndex:0];
 }
 
 /* print_html_element - print an element as HTML */
@@ -275,7 +269,7 @@ static void print_html_element(NSMutableString *out, element *elt, bool obfuscat
     case NOTE:
         /* if contents.str == 0, then print note; else ignore, since this
          * is a note block that has been incorporated into the notes list */
-        if (elt->contents.str == 0) {
+        if (!elt->contents.str) {
             add_endnote(elt);
             ++notenumber;
                 [out appendFormat:@"<a class=\"noteref\" id=\"fnref%d\" href=\"#fn%d\" title=\"Jump to note %d\">[%d]</a>",
@@ -402,12 +396,12 @@ static void print_latex_element(NSMutableString *out, element *elt) {
         /* don't print HTML */
         break;
     case LINK:
-        [out appendFormat:@"\\href{%s}{", elt->contents.link->url];
+        [out appendFormat:@"\\href{%@}{", elt->contents.link->url];
         print_latex_element_list(out, elt->contents.link->label);
         [out appendString:@"}"];
         break;
     case IMAGE:
-        [out appendFormat:@"\\includegraphics{%s}", elt->contents.link->url];
+        [out appendFormat:@"\\includegraphics{%@}", elt->contents.link->url];
         break;
     case EMPH:
         [out appendString:@"\\emph{"];
@@ -506,7 +500,7 @@ static void print_latex_element(NSMutableString *out, element *elt) {
     case NOTE:
         /* if contents.str == 0, then print note; else ignore, since this
          * is a note block that has been incorporated into the notes list */
-        if (elt->contents.str == 0) {
+        if (!elt->contents.str) {
             [out appendString:@"\\footnote{"];
             padded = 2;
             print_latex_element_list(out, elt->children);
@@ -606,7 +600,7 @@ static void print_groff_mm_element(NSMutableString *out, element *elt, int count
         break;
     case LINK:
         print_groff_mm_element_list(out, elt->contents.link->label);
-        [out appendFormat:@" (%s)", elt->contents.link->url];
+        [out appendFormat:@" (%@)", elt->contents.link->url];
         padded = 0;
         break;
     case IMAGE:
@@ -709,7 +703,7 @@ static void print_groff_mm_element(NSMutableString *out, element *elt, int count
     case NOTE:
         /* if contents.str == 0, then print note; else ignore, since this
          * is a note block that has been incorporated into the notes list */
-        if (elt->contents.str == 0) {
+        if (!elt->contents.str) {
             [out appendString:@"\\*F\n"];
             [out appendString:@".FS\n"];
             padded = 2;

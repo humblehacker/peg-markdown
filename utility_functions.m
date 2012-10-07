@@ -7,6 +7,9 @@
 
  ***********************************************************************/
 
+#import "markdown_peg.h"
+
+
 /* cons - cons an element onto a list, returning pointer to new head */
 static element * cons(element *elt, element *list) {
     assert(elt != NULL);
@@ -50,7 +53,7 @@ static NSMutableString *concat_string_list(element *list) {
 
 struct Input {
     NSString *charbuf;     /* Buffer of characters to be parsed. */
-    NSUInteger position;   /* Curent index into charbuf. */
+    NSUInteger position;   /* Current index into charbuf. */
 };
 
 struct Markdown {
@@ -86,7 +89,7 @@ static element * mk_str(const char *string) {
     element *result;
     assert(string != NULL);
     result = mk_element(STRING);
-    result->contents.str = [[NSString alloc] initWithCString:string encoding:[NSString defaultCStringEncoding]];
+    result->contents.str = [[NSMutableString alloc] initWithCString:string encoding:[NSString defaultCStringEncoding]];
     return result;
 }
 
@@ -124,7 +127,7 @@ static element * mk_link(element *label, NSString *url, NSString *title) {
 }
 /* extension = returns true if extension is selected */
 static bool extension(int ext) {
-    return (md.syntax_extensions & ext);
+    return (bool) (md.syntax_extensions & ext);
 }
 
 /* match_inlines - returns true if inline lists match (case-insensitive...) */
@@ -162,7 +165,6 @@ static bool match_inlines(element *l1, element *l2) {
         default:
             fprintf(stderr, "match_inlines encountered unknown key = %d\n", l1->key);
             exit(EXIT_FAILURE);
-            break;
         }
         l1 = l1->next;
         l2 = l2->next;
