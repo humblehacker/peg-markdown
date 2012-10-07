@@ -216,7 +216,7 @@ static bool find_note(element **result, NSString *label) {
 # define YY_DEBUG 1
 #endif
 
-#define YY_INPUT(buf, result, max_size)                               \
+#define YY_INPUT(buf, result, max_size, D)                            \
 {                                                                     \
     NSInteger yyc;                                                    \
     if (md.input.position < md.input.charbuf.length) {                \
