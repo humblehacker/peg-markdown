@@ -1,6 +1,6 @@
 /**********************************************************************
 
-  markdown_output.c - functions for printing Elements parsed by 
+  markdown_output.c - functions for printing Elements parsed by
                       markdown_peg.
   (c) 2008 John MacFarlane (jgm at berkeley dot edu).
 
@@ -61,7 +61,7 @@ static void pad(NSMutableString *out, int num) {
 
  ***********************************************************************/
 
-/* print_html_string - print string, escaping for HTML  
+/* print_html_string - print string, escaping for HTML
  * If obfuscate selected, convert characters to hex or decimal entities at random */
 static void print_html_string(NSMutableString *out, NSString *str, bool obfuscate) {
   NSUInteger i;
@@ -282,8 +282,8 @@ static void print_html_element(NSMutableString *out, element *elt, bool obfuscat
                 notenumber, notenumber, notenumber, notenumber];
         }
         break;
-    default: 
-        fprintf(stderr, "print_html_element encountered unknown element key = %d\n", elt->key); 
+    default:
+        fprintf(stderr, "print_html_element encountered unknown element key = %d\n", elt->key);
         exit(EXIT_FAILURE);
     }
 }
@@ -291,7 +291,7 @@ static void print_html_element(NSMutableString *out, element *elt, bool obfuscat
 static void print_html_endnotes(NSMutableString *out) {
     int counter = 0;
     element *note_elt;
-    if (endnotes == nil) 
+    if (endnotes == nil)
         return;
     [out appendString:@"<hr/>\n<ol id=\"notes\">"];
     for (NSValue *note in [endnotes reverseObjectEnumerator]) {
@@ -374,10 +374,10 @@ static void print_latex_element(NSMutableString *out, element *elt) {
     case ELLIPSIS:
         [out appendString:@"\\ldots{}"];
         break;
-    case EMDASH: 
+    case EMDASH:
         [out appendString:@"---"];
         break;
-    case ENDASH: 
+    case ENDASH:
         [out appendString:@"--"];
         break;
     case APOSTROPHE:
@@ -511,14 +511,14 @@ static void print_latex_element(NSMutableString *out, element *elt) {
             padded = 2;
             print_latex_element_list(out, elt->children);
             [out appendString:@"}"];
-            padded = 0; 
+            padded = 0;
         }
         break;
     case REFERENCE:
         /* Nonprinting */
         break;
-    default: 
-        fprintf(stderr, "print_latex_element encountered unknown element key = %d\n", elt->key); 
+    default:
+        fprintf(stderr, "print_latex_element encountered unknown element key = %d\n", elt->key);
         exit(EXIT_FAILURE);
     }
 }
@@ -716,14 +716,14 @@ static void print_groff_mm_element(NSMutableString *out, element *elt, int count
             print_groff_mm_element_list(out, elt->children);
             pad(out, 1);
             [out appendString:@".FE\n"];
-            padded = 1; 
+            padded = 1;
         }
         break;
     case REFERENCE:
         /* Nonprinting */
         break;
-    default: 
-        fprintf(stderr, "print_groff_mm_element encountered unknown element key = %d\n", elt->key); 
+    default:
+        fprintf(stderr, "print_groff_mm_element encountered unknown element key = %d\n", elt->key);
         exit(EXIT_FAILURE);
     }
 }
@@ -756,7 +756,7 @@ void print_element_list(NSMutableString *out, element *elt, int format, int exts
         print_groff_mm_element_list(out, elt);
         break;
     default:
-        fprintf(stderr, "print_element - unknown format = %d\n", format); 
+        fprintf(stderr, "print_element - unknown format = %d\n", format);
         exit(EXIT_FAILURE);
     }
 }
