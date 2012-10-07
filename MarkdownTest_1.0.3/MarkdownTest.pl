@@ -17,7 +17,7 @@ our $VERSION = '1.0.2';
 
 my $time_start = new Benchmark;
 my $test_dir = "Tests";
-my $script  = "./Markdown.pl";
+my $script  = "../build/Release/markdown";
 my $use_tidy = 0;
 my ($flag_version);
 
