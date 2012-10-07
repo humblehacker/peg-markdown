@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
-		6334F27E130C8D6D000D1180 /* PBXBuildRule */ = {
+		6334F27E130C8D6D000D1180 /* Generate Leg Parser */ = {
 			isa = PBXBuildRule;
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.leg";
@@ -195,7 +195,7 @@
 				6334F232130C8B99000D1180 /* Headers */,
 			);
 			buildRules = (
-				6334F27E130C8D6D000D1180 /* PBXBuildRule */,
+				6334F27E130C8D6D000D1180 /* Generate Leg Parser */,
 			);
 			dependencies = (
 			);
